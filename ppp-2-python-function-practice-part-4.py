@@ -51,23 +51,48 @@ print(num_within(10,2,5))
 ## The function accepts the number n, the number of rows to print
 ## Note : Pascal's triangle is an arithmetic and geometric figure first imagined by Blaise Pascal. Each number is the two numbers above it added together.
 
+# Firstly, an input number is taken from the user to define the number of rows.
+integer = int(input("Enter the number of rows: "))
 
+# Secondly, an empty list is defined, which is used to store values.
+list = [] #an empty list
 
+# Then, a for loop is used to iterate from 0 to n-1 that append the sub-lists to the initial list.
 def pascal():
-	#your code here
+    for n in range(integer):
+        list.append([])
+    
+# After that, 1 is appended to the list.
+    if(integer != 0):
+        list[n].append(1)
 
-    pascal(1)
-    '''
-output:
-1
-'''
+# Then, a for loop is used again to put the values of the number inside the adjacent row of the triangle.
+    for m in range(1, n):
+        list[n].append(list[n - 1][m - 1] + list[n - 1][m])
+    if(integer != 0):
+        list[n].append(1)
+# Finally, the Pascal Triangle is printed according to the given format.
+    for n in range(integer):
+        print(" " * (integer - n), end = " ", sep = " ")
+        for m in range(0, n + 1):
+            print('{0:5}'.format(list[n][m]), end = " ", sep = " ")
+        print()
 
-pascal(5)
-'''
-output:
-1
-1 1
-1 2 1
-1 3 3 1
-1 4 6 4 1
-'''
+# def pascal():
+# 	#your code here
+
+#     pascal(1)
+#     '''
+# output:
+# 1
+# '''
+
+# pascal(5)
+# '''
+# output:
+# 1
+# 1 1
+# 1 2 1
+# 1 3 3 1
+# 1 4 6 4 1
+# '''
